@@ -89,7 +89,7 @@ const AdminPage = () => {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center px-6">
         <div className="w-full max-w-sm text-center">
-          <p className="font-script text-3xl text-primary mb-2">Alya & Daniel</p>
+          <p className="font-script text-3xl text-primary mb-2">Name & Name</p>
           <h1 className="font-serif text-2xl text-foreground mb-8">Admin Access</h1>
 
           <form onSubmit={handleLogin} className="space-y-4">
@@ -125,7 +125,7 @@ const AdminPage = () => {
       <div className="max-w-4xl mx-auto">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <p className="font-script text-2xl text-primary">Alya & Daniel</p>
+            <p className="font-script text-2xl text-primary">Name & Name</p>
             <h1 className="font-serif text-2xl text-foreground">Guest Responses</h1>
           </div>
           <div className="flex gap-3">
