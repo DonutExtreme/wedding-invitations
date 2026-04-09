@@ -24,9 +24,9 @@ const InvitationSection = () => {
         </p>
 
         <div className="space-y-2 mb-8">
-          <h2 className="font-serif text-3xl md:text-4xl text-foreground">Nur Alya Binti Ahmad</h2>
+          <h2 className="font-serif text-3xl md:text-4xl text-foreground">Name</h2>
           <p className="font-serif text-primary text-xl italic">&</p>
-          <h2 className="font-serif text-3xl md:text-4xl text-foreground">Daniel Bin Ismail</h2>
+          <h2 className="font-serif text-3xl md:text-4xl text-foreground">Name</h2>
         </div>
 
         <div className="gold-divider" />
