@@ -1,21 +1,44 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const RSVPSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({ name: "", attendance: "", guests: "1", message: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name || !form.attendance) {
+    if (!form.name.trim() || !form.attendance) {
       toast.error("Please fill in your name and attendance.");
       return;
     }
-    setSubmitted(true);
-    toast.success("Thank you for your RSVP! We look forward to celebrating with you.");
+    if (form.name.trim().length > 200) {
+      toast.error("Name is too long.");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const { error } = await supabase.from("rsvp_responses").insert({
+        name: form.name.trim(),
+        attendance: form.attendance,
+        guests: parseInt(form.guests),
+        message: form.message.trim() || null,
+      });
+
+      if (error) throw error;
+
+      setSubmitted(true);
+      toast.success("Thank you for your RSVP! We look forward to celebrating with you.");
+    } catch {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -57,6 +80,7 @@ const RSVPSection = () => {
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 className="w-full border border-border bg-background px-4 py-3 font-sans text-sm text-foreground focus:outline-none focus:border-primary transition-colors"
                 placeholder="Your full name"
+                maxLength={200}
               />
             </div>
 
@@ -110,6 +134,7 @@ const RSVPSection = () => {
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
                 rows={4}
+                maxLength={1000}
                 className="w-full border border-border bg-background px-4 py-3 font-sans text-sm text-foreground focus:outline-none focus:border-primary transition-colors resize-none"
                 placeholder="Share your wishes..."
               />
@@ -117,9 +142,10 @@ const RSVPSection = () => {
 
             <button
               type="submit"
-              className="w-full font-sans text-xs tracking-[0.3em] uppercase bg-primary text-primary-foreground py-4 hover:bg-primary/90 transition-colors duration-300"
+              disabled={loading}
+              className="w-full font-sans text-xs tracking-[0.3em] uppercase bg-primary text-primary-foreground py-4 hover:bg-primary/90 transition-colors duration-300 disabled:opacity-50"
             >
-              Send RSVP
+              {loading ? "Sending..." : "Send RSVP"}
             </button>
           </form>
         )}
