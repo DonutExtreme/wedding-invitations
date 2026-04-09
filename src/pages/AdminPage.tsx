@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
 
-const ADMIN_PASSWORD = "alyaanddaniel2025";
+const ADMIN_PASSWORD = "0123456789";
 
 const AdminPage = () => {
   const [authenticated, setAuthenticated] = useState(false);
