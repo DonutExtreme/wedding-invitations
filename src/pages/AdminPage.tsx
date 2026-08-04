@@ -94,42 +94,23 @@ const AdminPage = () => {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Admin email"
-              autoComplete="email"
-              className="w-full border border-border bg-background px-4 py-3 font-sans text-sm text-foreground focus:outline-none focus:border-primary transition-colors text-center"
-            />
-            <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
-              autoComplete={mode === "signup" ? "new-password" : "current-password"}
+              placeholder="Enter password"
+              autoComplete="current-password"
               className="w-full border border-border bg-background px-4 py-3 font-sans text-sm text-foreground focus:outline-none focus:border-primary transition-colors text-center"
             />
 
             {error && <p className="text-sm text-destructive">{error}</p>}
-            {notice && <p className="text-sm text-primary">{notice}</p>}
             <button
               type="submit"
               className="w-full font-sans text-xs tracking-[0.3em] uppercase bg-primary text-primary-foreground py-3 hover:bg-primary/90 transition-colors"
             >
-              {mode === "signup" ? "Create Account" : "Enter"}
+              Enter
             </button>
           </form>
 
-          <button
-            onClick={() => {
-              setMode(mode === "login" ? "signup" : "login");
-              setError("");
-              setNotice("");
-            }}
-            className="mt-4 font-sans text-xs text-muted-foreground hover:text-primary transition-colors"
-          >
-            {mode === "login" ? "Create admin account" : "Back to sign in"}
-          </button>
 
 
           <button
