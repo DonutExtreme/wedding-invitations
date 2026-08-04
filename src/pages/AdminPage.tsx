@@ -13,9 +13,11 @@ interface RsvpResponse {
 
 const AdminPage = () => {
   const [authenticated, setAuthenticated] = useState(false);
+  const [mode, setMode] = useState<"login" | "signup">("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [notice, setNotice] = useState("");
   const [responses, setResponses] = useState<RsvpResponse[]>([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -29,9 +31,25 @@ const AdminPage = () => {
     return true;
   };
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+    setNotice("");
+
+    if (mode === "signup") {
+      const { error: signUpError } = await supabase.auth.signUp({
+        email: email.trim(),
+        password,
+        options: { emailRedirectTo: window.location.origin },
+      });
+      if (signUpError) {
+        setError(signUpError.message);
+        return;
+      }
+      setNotice("Account created. Check your email to confirm, then sign in.");
+      setMode("login");
+      return;
+    }
 
     const { error: authError } = await supabase.auth.signInWithPassword({
       email: email.trim(),
@@ -51,6 +69,7 @@ const AdminPage = () => {
 
     setAuthenticated(true);
   };
+
 
   useEffect(() => {
     supabase.auth.getSession().then(async ({ data }) => {
