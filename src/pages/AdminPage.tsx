@@ -91,12 +91,22 @@ const AdminPage = () => {
 
           <form onSubmit={handleLogin} className="space-y-4">
             <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Admin email"
+              autoComplete="email"
+              className="w-full border border-border bg-background px-4 py-3 font-sans text-sm text-foreground focus:outline-none focus:border-primary transition-colors text-center"
+            />
+            <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter password"
+              placeholder="Password"
+              autoComplete="current-password"
               className="w-full border border-border bg-background px-4 py-3 font-sans text-sm text-foreground focus:outline-none focus:border-primary transition-colors text-center"
             />
+
             {error && <p className="text-sm text-destructive">{error}</p>}
             <button
               type="submit"
