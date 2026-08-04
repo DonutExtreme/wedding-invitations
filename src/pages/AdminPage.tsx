@@ -2,66 +2,63 @@ import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
 
-const ADMIN_PASSWORD = "0123456789";
+interface RsvpResponse {
+  id: string;
+  name: string;
+  attendance: string;
+  guests: number;
+  message: string | null;
+  created_at: string;
+}
 
 const AdminPage = () => {
   const [authenticated, setAuthenticated] = useState(false);
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [responses, setResponses] = useState<any[]>([]);
+  const [responses, setResponses] = useState<RsvpResponse[]>([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  const loadResponses = async () => {
+    setLoading(true);
+    const { data, error: rpcError } = await supabase.rpc("get_rsvp_responses");
+    setLoading(false);
+    if (rpcError) return false;
+    setResponses((data as RsvpResponse[]) ?? []);
+    return true;
+  };
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (password !== ADMIN_PASSWORD) {
-      setError("Incorrect password");
+    setError("");
+
+    const { error: authError } = await supabase.auth.signInWithPassword({
+      email: email.trim(),
+      password,
+    });
+    if (authError) {
+      setError("Invalid email or password.");
       return;
     }
 
-    // Sign in with a service-level approach using anon + password check
-    // For simplicity, we use supabase auth
-    try {
-      const { error: authError } = await supabase.auth.signInWithPassword({
-        email: "admin@wedding.local",
-        password: ADMIN_PASSWORD,
-      });
-      if (authError) {
-        // If admin account doesn't exist yet, sign up
-        const { error: signUpError } = await supabase.auth.signUp({
-          email: "admin@wedding.local",
-          password: ADMIN_PASSWORD,
-        });
-        if (signUpError) {
-          setError("Authentication failed. Please try again.");
-          return;
-        }
-      }
-    } catch {
-      setError("Authentication failed.");
+    const allowed = await loadResponses();
+    if (!allowed) {
+      await supabase.auth.signOut();
+      setError("This account does not have admin access.");
       return;
     }
 
     setAuthenticated(true);
-    setError("");
   };
 
   useEffect(() => {
-    if (!authenticated) return;
-
-    const fetchResponses = async () => {
-      setLoading(true);
-      const { data, error } = await supabase
-        .from("rsvp_responses")
-        .select("*")
-        .order("created_at", { ascending: false });
-
-      if (!error && data) setResponses(data);
-      setLoading(false);
-    };
-
-    fetchResponses();
-  }, [authenticated]);
+    supabase.auth.getSession().then(async ({ data }) => {
+      if (!data.session) return;
+      const allowed = await loadResponses();
+      if (allowed) setAuthenticated(true);
+    });
+  }, []);
 
   const attending = responses.filter((r) => r.attendance === "Joyfully Accept");
   const declining = responses.filter((r) => r.attendance === "Regretfully Decline");
