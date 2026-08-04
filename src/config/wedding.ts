@@ -5,25 +5,25 @@
  */
 export const wedding = {
   // --- Couple ---
-  brideName: "Nurul",
-  groomName: "Ahmad",
-  initials: "N&A", // shown on the envelope seal
+  brideName: "Danish",
+  groomName: "Putri",
+  initials: "D&P", // shown on the envelope seal
 
   // --- Date & time ---
-  dateShort: "15 · 11 · 2025", // hero + footer
-  dateLong: "Saturday, 15th November 2025", // event details card
+  dateShort: "02 · 01 · 2027", // hero + footer
+  dateLong: "Saturday, 2nd January 2027", // event details card
   time: "11:00 AM – 4:00 PM",
   receptionTime: "12:00 PM",
 
   // --- Venue ---
-  venueName: "Dewan Seri Endon",
-  venueAddress: "Dewan Seri Endon, Shah Alam, Selangor, Malaysia",
+  venueName: "Kampung Pasir Baru",
+  venueAddress: "Lot 12, Lorong Cempaka, Kampung Pasir Baru,Semenyih , Selangor",
   // Google Maps: right-click your venue → "Copy coordinates"
-  mapLat: 3.07,
-  mapLng: 101.5,
+  mapLat: 2.9976651039468325,
+  mapLng:  101.87285777037407,
 
   // --- Wording ---
-  heroTagline: "We're Getting Married",
+  heroTagline: "Alhamdulillah",
   invitationOpening:
     "With the blessing of Allah SWT, we cordially invite you to celebrate the union of our beloved",
   invitationClosing:
