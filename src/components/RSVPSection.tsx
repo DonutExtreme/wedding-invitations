@@ -54,7 +54,7 @@ const RSVPSection = () => {
         <div className="gold-divider" />
 
         <p className="font-sans text-sm text-muted-foreground mb-10">
-          Please let us know if you can make it by 1st November 2025
+          Please let us know if you can make it by 2nd January 2027
         </p>
 
         {submitted ? (
