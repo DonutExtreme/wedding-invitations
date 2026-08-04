@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import floralTop from "@/assets/floral-top.png";
+import { wedding } from "@/config/wedding";
 
 const EnvelopeOpener = ({ onOpen }: { onOpen: () => void }) => {
   const [stage, setStage] = useState<"closed" | "opening" | "done">("closed");
@@ -59,7 +60,7 @@ const EnvelopeOpener = ({ onOpen }: { onOpen: () => void }) => {
                 alt=""
                 className="w-24 opacity-60 mb-2"
               />
-              <p className="font-script text-2xl sm:text-3xl text-primary">Name & Name</p>
+              <p className="font-script text-2xl sm:text-3xl text-primary">{wedding.brideName} & {wedding.groomName}</p>
               <p className="font-sans text-[9px] tracking-[0.3em] uppercase text-muted-foreground mt-2">
                 Wedding Invitation
               </p>
@@ -91,7 +92,7 @@ const EnvelopeOpener = ({ onOpen }: { onOpen: () => void }) => {
                   exit={{ scale: 0, opacity: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <span className="font-serif text-primary-foreground text-xs font-bold">N&N</span>
+                  <span className="font-serif text-primary-foreground text-xs font-bold">{wedding.initials}</span>
                 </motion.div>
               )}
             </AnimatePresence>
