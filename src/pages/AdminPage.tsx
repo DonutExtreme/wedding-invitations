@@ -11,13 +11,12 @@ interface RsvpResponse {
   created_at: string;
 }
 
+const ADMIN_EMAIL = "muhddanish704@gmail.com";
+
 const AdminPage = () => {
   const [authenticated, setAuthenticated] = useState(false);
-  const [mode, setMode] = useState<"login" | "signup">("login");
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [notice, setNotice] = useState("");
   const [responses, setResponses] = useState<RsvpResponse[]>([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -34,29 +33,13 @@ const AdminPage = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-    setNotice("");
-
-    if (mode === "signup") {
-      const { error: signUpError } = await supabase.auth.signUp({
-        email: email.trim(),
-        password,
-        options: { emailRedirectTo: window.location.origin },
-      });
-      if (signUpError) {
-        setError(signUpError.message);
-        return;
-      }
-      setNotice("Account created. Check your email to confirm, then sign in.");
-      setMode("login");
-      return;
-    }
 
     const { error: authError } = await supabase.auth.signInWithPassword({
-      email: email.trim(),
+      email: ADMIN_EMAIL,
       password,
     });
     if (authError) {
-      setError("Invalid email or password.");
+      setError("Incorrect password.");
       return;
     }
 
@@ -69,6 +52,7 @@ const AdminPage = () => {
 
     setAuthenticated(true);
   };
+
 
 
   useEffect(() => {
