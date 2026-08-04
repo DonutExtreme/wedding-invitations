@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Calendar, Clock, MapPin } from "lucide-react";
+import { wedding } from "@/config/wedding";
 
 const EventDetails = () => {
   const ref = useRef(null);
@@ -10,17 +11,17 @@ const EventDetails = () => {
     {
       icon: Calendar,
       title: "Date",
-      info: "Saturday, 15th November 2025",
+      info: wedding.dateLong,
     },
     {
       icon: Clock,
       title: "Time",
-      info: "11:00 AM – 4:00 PM",
+      info: wedding.time,
     },
     {
       icon: MapPin,
       title: "Venue",
-      info: "Dewan Seri Endon, Shah Alam, Selangor, Malaysia",
+      info: wedding.venueAddress,
     },
   ];
 
@@ -63,13 +64,13 @@ const EventDetails = () => {
         >
           <p className="font-script text-2xl text-primary mb-4">Reception</p>
           <p className="font-sans text-sm text-muted-foreground leading-relaxed">
-            The reception will begin at <span className="text-foreground font-medium">12:00 PM</span> with a traditional Malay feast. 
-            Entertainment and festivities will follow.
+            The reception will begin at{" "}
+            <span className="text-foreground font-medium">{wedding.receptionTime}</span>{" "}
+            {wedding.receptionNote}
           </p>
           <div className="gold-divider" />
           <p className="font-serif text-sm text-foreground italic">
-            "And among His signs is that He created for you mates from among yourselves, 
-            that you may dwell in tranquility with them." — Ar-Rum 30:21
+            {wedding.quote}
           </p>
         </motion.div>
       </motion.div>

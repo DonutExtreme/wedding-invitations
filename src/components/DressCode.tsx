@@ -1,13 +1,9 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
-const colors = [
-  { name: "Ivory", color: "hsl(40, 33%, 97%)" },
-  { name: "Dusty Rose", color: "hsl(350, 30%, 80%)" },
-  { name: "Sage", color: "hsl(140, 15%, 70%)" },
-  { name: "Gold", color: "hsl(38, 60%, 55%)" },
-  { name: "Champagne", color: "hsl(38, 40%, 80%)" },
-];
+import { wedding } from "@/config/wedding";
+
+const colors = wedding.dressColors;
 
 const DressCode = () => {
   const ref = useRef(null);
@@ -26,7 +22,7 @@ const DressCode = () => {
         <div className="gold-divider" />
 
         <p className="font-sans text-sm text-muted-foreground mb-10">
-          We kindly request our guests to dress in soft, elegant tones to complement our colour palette.
+          {wedding.dressCodeNote}
         </p>
 
         <div className="flex justify-center gap-6 flex-wrap">

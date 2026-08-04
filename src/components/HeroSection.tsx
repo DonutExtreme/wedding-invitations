@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import floralTop from "@/assets/floral-top.png";
+import { wedding } from "@/config/wedding";
 
 const HeroSection = () => {
   return (
@@ -26,7 +27,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
         >
-          We're Getting Married
+          {wedding.heroTagline}
         </motion.p>
 
         <motion.h1
@@ -35,7 +36,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.8 }}
         >
-          Names
+          {wedding.brideName}
         </motion.h1>
 
         <motion.div
@@ -55,7 +56,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 1 }}
         >
-          Names
+          {wedding.groomName}
         </motion.h1>
 
         <motion.p
@@ -64,7 +65,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.5 }}
         >
-          15 · 11 · 2025
+          {wedding.dateShort}
         </motion.p>
 
         <motion.div

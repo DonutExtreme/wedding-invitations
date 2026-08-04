@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { wedding } from "@/config/wedding";
 
 const InvitationSection = () => {
   const ref = useRef(null);
@@ -19,21 +20,19 @@ const InvitationSection = () => {
         <div className="gold-divider" />
 
         <p className="font-sans text-sm leading-relaxed text-muted-foreground mb-8">
-          With the blessing of Allah SWT, we cordially invite you to celebrate 
-          the union of our beloved
+          {wedding.invitationOpening}
         </p>
 
         <div className="space-y-2 mb-8">
-          <h2 className="font-serif text-3xl md:text-4xl text-foreground">Name</h2>
+          <h2 className="font-serif text-3xl md:text-4xl text-foreground">{wedding.brideName}</h2>
           <p className="font-serif text-primary text-xl italic">&</p>
-          <h2 className="font-serif text-3xl md:text-4xl text-foreground">Name</h2>
+          <h2 className="font-serif text-3xl md:text-4xl text-foreground">{wedding.groomName}</h2>
         </div>
 
         <div className="gold-divider" />
 
         <p className="font-sans text-sm leading-relaxed text-muted-foreground">
-          We would be honoured by your presence as we begin this beautiful 
-          journey together. Your prayers and blessings mean the world to us.
+          {wedding.invitationClosing}
         </p>
       </motion.div>
     </section>
