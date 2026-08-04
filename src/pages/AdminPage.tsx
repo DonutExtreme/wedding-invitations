@@ -11,13 +11,12 @@ interface RsvpResponse {
   created_at: string;
 }
 
+const ADMIN_EMAIL = "muhddanish704@gmail.com";
+
 const AdminPage = () => {
   const [authenticated, setAuthenticated] = useState(false);
-  const [mode, setMode] = useState<"login" | "signup">("login");
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [notice, setNotice] = useState("");
   const [responses, setResponses] = useState<RsvpResponse[]>([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -34,29 +33,13 @@ const AdminPage = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-    setNotice("");
-
-    if (mode === "signup") {
-      const { error: signUpError } = await supabase.auth.signUp({
-        email: email.trim(),
-        password,
-        options: { emailRedirectTo: window.location.origin },
-      });
-      if (signUpError) {
-        setError(signUpError.message);
-        return;
-      }
-      setNotice("Account created. Check your email to confirm, then sign in.");
-      setMode("login");
-      return;
-    }
 
     const { error: authError } = await supabase.auth.signInWithPassword({
-      email: email.trim(),
+      email: ADMIN_EMAIL,
       password,
     });
     if (authError) {
-      setError("Invalid email or password.");
+      setError("Incorrect password.");
       return;
     }
 
@@ -69,6 +52,7 @@ const AdminPage = () => {
 
     setAuthenticated(true);
   };
+
 
 
   useEffect(() => {
@@ -110,42 +94,23 @@ const AdminPage = () => {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Admin email"
-              autoComplete="email"
-              className="w-full border border-border bg-background px-4 py-3 font-sans text-sm text-foreground focus:outline-none focus:border-primary transition-colors text-center"
-            />
-            <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
-              autoComplete={mode === "signup" ? "new-password" : "current-password"}
+              placeholder="Enter password"
+              autoComplete="current-password"
               className="w-full border border-border bg-background px-4 py-3 font-sans text-sm text-foreground focus:outline-none focus:border-primary transition-colors text-center"
             />
 
             {error && <p className="text-sm text-destructive">{error}</p>}
-            {notice && <p className="text-sm text-primary">{notice}</p>}
             <button
               type="submit"
               className="w-full font-sans text-xs tracking-[0.3em] uppercase bg-primary text-primary-foreground py-3 hover:bg-primary/90 transition-colors"
             >
-              {mode === "signup" ? "Create Account" : "Enter"}
+              Enter
             </button>
           </form>
 
-          <button
-            onClick={() => {
-              setMode(mode === "login" ? "signup" : "login");
-              setError("");
-              setNotice("");
-            }}
-            className="mt-4 font-sans text-xs text-muted-foreground hover:text-primary transition-colors"
-          >
-            {mode === "login" ? "Create admin account" : "Back to sign in"}
-          </button>
 
 
           <button
