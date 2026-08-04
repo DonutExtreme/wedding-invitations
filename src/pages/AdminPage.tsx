@@ -13,9 +13,11 @@ interface RsvpResponse {
 
 const AdminPage = () => {
   const [authenticated, setAuthenticated] = useState(false);
+  const [mode, setMode] = useState<"login" | "signup">("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [notice, setNotice] = useState("");
   const [responses, setResponses] = useState<RsvpResponse[]>([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -29,9 +31,25 @@ const AdminPage = () => {
     return true;
   };
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+    setNotice("");
+
+    if (mode === "signup") {
+      const { error: signUpError } = await supabase.auth.signUp({
+        email: email.trim(),
+        password,
+        options: { emailRedirectTo: window.location.origin },
+      });
+      if (signUpError) {
+        setError(signUpError.message);
+        return;
+      }
+      setNotice("Account created. Check your email to confirm, then sign in.");
+      setMode("login");
+      return;
+    }
 
     const { error: authError } = await supabase.auth.signInWithPassword({
       email: email.trim(),
@@ -51,6 +69,7 @@ const AdminPage = () => {
 
     setAuthenticated(true);
   };
+
 
   useEffect(() => {
     supabase.auth.getSession().then(async ({ data }) => {
@@ -89,7 +108,7 @@ const AdminPage = () => {
           <p className="font-script text-3xl text-primary mb-2">Danish & Putri</p>
           <h1 className="font-serif text-2xl text-foreground mb-8">Admin Access</h1>
 
-          <form onSubmit={handleLogin} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <input
               type="email"
               value={email}
@@ -103,18 +122,31 @@ const AdminPage = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
-              autoComplete="current-password"
+              autoComplete={mode === "signup" ? "new-password" : "current-password"}
               className="w-full border border-border bg-background px-4 py-3 font-sans text-sm text-foreground focus:outline-none focus:border-primary transition-colors text-center"
             />
 
             {error && <p className="text-sm text-destructive">{error}</p>}
+            {notice && <p className="text-sm text-primary">{notice}</p>}
             <button
               type="submit"
               className="w-full font-sans text-xs tracking-[0.3em] uppercase bg-primary text-primary-foreground py-3 hover:bg-primary/90 transition-colors"
             >
-              Enter
+              {mode === "signup" ? "Create Account" : "Enter"}
             </button>
           </form>
+
+          <button
+            onClick={() => {
+              setMode(mode === "login" ? "signup" : "login");
+              setError("");
+              setNotice("");
+            }}
+            className="mt-4 font-sans text-xs text-muted-foreground hover:text-primary transition-colors"
+          >
+            {mode === "login" ? "Create admin account" : "Back to sign in"}
+          </button>
+
 
           <button
             onClick={() => navigate("/")}
