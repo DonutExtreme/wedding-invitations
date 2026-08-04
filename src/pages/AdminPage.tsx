@@ -108,7 +108,7 @@ const AdminPage = () => {
           <p className="font-script text-3xl text-primary mb-2">Danish & Putri</p>
           <h1 className="font-serif text-2xl text-foreground mb-8">Admin Access</h1>
 
-          <form onSubmit={handleLogin} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <input
               type="email"
               value={email}
@@ -122,18 +122,31 @@ const AdminPage = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
-              autoComplete="current-password"
+              autoComplete={mode === "signup" ? "new-password" : "current-password"}
               className="w-full border border-border bg-background px-4 py-3 font-sans text-sm text-foreground focus:outline-none focus:border-primary transition-colors text-center"
             />
 
             {error && <p className="text-sm text-destructive">{error}</p>}
+            {notice && <p className="text-sm text-primary">{notice}</p>}
             <button
               type="submit"
               className="w-full font-sans text-xs tracking-[0.3em] uppercase bg-primary text-primary-foreground py-3 hover:bg-primary/90 transition-colors"
             >
-              Enter
+              {mode === "signup" ? "Create Account" : "Enter"}
             </button>
           </form>
+
+          <button
+            onClick={() => {
+              setMode(mode === "login" ? "signup" : "login");
+              setError("");
+              setNotice("");
+            }}
+            className="mt-4 font-sans text-xs text-muted-foreground hover:text-primary transition-colors"
+          >
+            {mode === "login" ? "Create admin account" : "Back to sign in"}
+          </button>
+
 
           <button
             onClick={() => navigate("/")}
