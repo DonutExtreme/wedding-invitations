@@ -11,7 +11,7 @@ const MusicToggle = () => {
     if (!wedding.musicUrl) return;
     const audio = new Audio(wedding.musicUrl);
     audio.loop = true;
-    audio.volume = wedding.musicVolume;
+    audio.volume = Math.min(1, Math.max(0, wedding.musicVolume));
     audio.preload = "auto";
     audioRef.current = audio;
     return () => {
