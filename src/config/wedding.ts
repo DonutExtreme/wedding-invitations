@@ -41,7 +41,7 @@ export const wedding = {
 
   // --- Background music ---
   // Paste a DIRECT audio link (must end in .mp3 / .m4a / .ogg). Leave "" to hide the button.
-  musicUrl: songAsset.url,
+  musicUrl: songUrl,
   musicVolume: 0.7, // 0 = silent, 1 = full volume
 
 
