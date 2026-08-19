@@ -1,4 +1,6 @@
-import songAsset from "@/assets/wedding-song.mp3.asset.json";
+// Song lives in /public so it also works on GitHub Pages (BASE_URL handles the subpath)
+const songUrl = `${import.meta.env.BASE_URL}wedding-song.mp3`;
+
 
 /**
 
