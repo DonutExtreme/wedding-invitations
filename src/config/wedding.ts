@@ -1,4 +1,7 @@
+import songAsset from "@/assets/wedding-song.mp3.asset.json";
+
 /**
+
  * ===========================================================
  *  EDIT ALL YOUR WEDDING DETAILS HERE — nothing else needed.
  * ===========================================================
@@ -36,8 +39,9 @@ export const wedding = {
 
   // --- Background music ---
   // Paste a DIRECT audio link (must end in .mp3 / .m4a / .ogg). Leave "" to hide the button.
-  musicUrl: "https://youtu.be/lY5V4hSLWY8?list=RDlY5V4hSLWY8",
+  musicUrl: songAsset.url,
   musicVolume: 0.7, // 0 = silent, 1 = full volume
+
 
 
   // --- Dress code palette ---
