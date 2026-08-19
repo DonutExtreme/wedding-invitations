@@ -34,6 +34,12 @@ export const wedding = {
     '"And among His signs is that He created for you mates from among yourselves, that you may dwell in tranquility with them." — Ar-Rum 30:21',
   footerNote: "We can't wait to celebrate with you",
 
+  // --- Background music ---
+  // Paste a DIRECT audio link (must end in .mp3 / .m4a / .ogg). Leave "" to hide the button.
+  musicUrl: "",
+  musicVolume: 0.3,
+
+
   // --- Dress code palette ---
   dressCodeNote:
     "We kindly request our guests to dress in soft, elegant tones to complement our colour palette.",

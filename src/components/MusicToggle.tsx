@@ -1,29 +1,41 @@
 import { useState, useRef, useEffect } from "react";
 import { Volume2, VolumeX } from "lucide-react";
 import { motion } from "framer-motion";
+import { wedding } from "@/config/wedding";
 
 const MusicToggle = () => {
   const [playing, setPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    // Create a silent audio context - replace src with actual music file
-    audioRef.current = new Audio();
-    audioRef.current.loop = true;
-    audioRef.current.volume = 0.3;
+    if (!wedding.musicUrl) return;
+    const audio = new Audio(wedding.musicUrl);
+    audio.loop = true;
+    audio.volume = wedding.musicVolume;
+    audio.preload = "auto";
+    audioRef.current = audio;
     return () => {
-      audioRef.current?.pause();
+      audio.pause();
+      audioRef.current = null;
     };
   }, []);
 
-  const toggle = () => {
-    if (!audioRef.current) return;
+  if (!wedding.musicUrl) return null;
+
+  const toggle = async () => {
+    const audio = audioRef.current;
+    if (!audio) return;
     if (playing) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play().catch(() => {});
+      audio.pause();
+      setPlaying(false);
+      return;
     }
-    setPlaying(!playing);
+    try {
+      await audio.play();
+      setPlaying(true);
+    } catch {
+      setPlaying(false);
+    }
   };
 
   return (
