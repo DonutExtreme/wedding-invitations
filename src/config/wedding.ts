@@ -1,4 +1,6 @@
-import songAsset from "@/assets/wedding-song.mp3.asset.json";
+// Song lives in /public so it also works on GitHub Pages (BASE_URL handles the subpath)
+const songUrl = `${import.meta.env.BASE_URL}wedding-song.mp3`;
+
 
 /**
 
@@ -39,7 +41,7 @@ export const wedding = {
 
   // --- Background music ---
   // Paste a DIRECT audio link (must end in .mp3 / .m4a / .ogg). Leave "" to hide the button.
-  musicUrl: songAsset.url,
+  musicUrl: songUrl,
   musicVolume: 0.7, // 0 = silent, 1 = full volume
 
 
