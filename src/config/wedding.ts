@@ -37,7 +37,7 @@ export const wedding = {
   // --- Background music ---
   // Paste a DIRECT audio link (must end in .mp3 / .m4a / .ogg). Leave "" to hide the button.
   musicUrl: "https://youtu.be/lY5V4hSLWY8?list=RDlY5V4hSLWY8",
-  musicVolume: 0.3,
+  musicVolume: 70,
 
 
   // --- Dress code palette ---
