@@ -33,8 +33,7 @@ export const wedding = {
     "With the blessing of Allah SWT, we cordially invite you to celebrate the union of our beloved",
   invitationClosing:
     "We would be honoured by your presence as we begin this beautiful journey together. Your prayers and blessings mean the world to us.",
-  receptionNote:
-    "with a traditional Malay feast. Entertainment and festivities will follow.",
+  receptionNote: "with a traditional Malay feast.",
   quote:
     '"And among His signs is that He created for you mates from among yourselves, that you may dwell in tranquility with them." — Ar-Rum 30:21',
   footerNote: "We can't wait to celebrate with you",
