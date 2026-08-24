@@ -17,12 +17,12 @@ export const wedding = {
   // --- Date & time ---
   dateShort: "02 · 01 · 2027", // hero + footer
   dateLong: "Saturday, 2nd January 2027", // event details card
-  time: "11:00 AM – 4:00 PM",
+  time: "12:00 PM – 4:00 PM",
   receptionTime: "12:00 PM",
 
   // --- Venue ---
   venueName: "Kampung Pasir Baru",
-  venueAddress: "Lot 12, Lorong Cempaka, Kampung Pasir Baru, Semenyih, Selangor",
+  venueAddress: "Lot 12, Lorong Cempaka, Kampung Pasir Baru, 43500, Semenyih, Selangor",
   // Google Maps: right-click your venue → "Copy coordinates"
   mapLat: 2.99754157965641,
   mapLng:  101.87299644720257,
@@ -41,7 +41,7 @@ export const wedding = {
   // --- Background music ---
   // Paste a DIRECT audio link (must end in .mp3 / .m4a / .ogg). Leave "" to hide the button.
   musicUrl: songUrl,
-  musicVolume: 0.7, // 0 = silent, 1 = full volume
+  musicVolume: 0.5, // 0 = silent, 1 = full volume
 
 
 
