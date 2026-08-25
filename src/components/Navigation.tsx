@@ -18,6 +18,18 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    if (href === "#") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+    const el = document.querySelector(href);
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY - 64;
+    window.scrollTo({ top, behavior: "smooth" });
+  };
+
   return (
     <AnimatePresence>
       {scrolled && (
@@ -33,7 +45,8 @@ const Navigation = () => {
               <a
                 key={item.label}
                 href={item.href}
-                className="font-sans text-[10px] tracking-[0.2em] uppercase text-muted-foreground hover:text-primary transition-colors whitespace-nowrap"
+                onClick={(e) => handleClick(e, item.href)}
+                className="font-sans text-[10px] tracking-[0.2em] uppercase text-muted-foreground hover:text-primary transition-colors whitespace-nowrap cursor-pointer"
               >
                 {item.label}
               </a>
@@ -42,6 +55,7 @@ const Navigation = () => {
         </motion.nav>
       )}
     </AnimatePresence>
+
   );
 };
 
