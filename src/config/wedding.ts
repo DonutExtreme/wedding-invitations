@@ -62,7 +62,7 @@ const mapQuery = encodeURIComponent(`${wedding.venueName}, ${wedding.venueAddres
 export const mapEmbedUrl = `https://www.google.com/maps?q=${wedding.mapLat},${wedding.mapLng}&z=16&output=embed`;
 // Coordinates as the destination so Maps navigates straight to the venue pin,
 // with the address as the label users see in the app.
-export const mapDirectionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${wedding.mapLat}%2C${wedding.mapLng}&destination_place_id=&travelmode=driving`;
+export const mapDirectionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${wedding.mapLat}%2C${wedding.mapLng}&travelmode=driving`;
 export const mapSearchUrl = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`;
 
 
