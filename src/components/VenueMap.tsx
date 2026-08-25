@@ -45,18 +45,15 @@ const VenueMap = () => {
           />
         </motion.div>
 
-        <motion.a
-          href={mapDirectionsUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 mt-6 font-sans text-xs tracking-[0.2em] uppercase text-primary border border-primary px-6 py-3 hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5, delay: 0.6 }}
-        >
-          <Navigation className="w-4 h-4" />
-          Get Directions
-        </motion.a>
+       <a
+  href={mapDirectionsUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex items-center gap-2 mt-6 font-sans text-xs tracking-[0.2em] uppercase text-primary border border-primary px-6 py-3 hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
+>
+  <Navigation className="w-4 h-4" />
+  Get Directions
+</a>
       </motion.div>
     </section>
   );
