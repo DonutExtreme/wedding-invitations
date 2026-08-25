@@ -16,7 +16,11 @@ const VenueMap = () => {
         transition={{ duration: 0.8 }}
       >
         <p className="font-script text-2xl text-primary mb-2">Find Us</p>
-        <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">Venue Location</h2>
+
+        <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">
+          Venue Location
+        </h2>
+
         <div className="gold-divider" />
 
         <p className="font-sans text-sm text-muted-foreground mb-8">
@@ -45,12 +49,6 @@ const VenueMap = () => {
           href={mapDirectionsUrl}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={(e) => {
-            // Some embedded previews block target="_blank"; force the open.
-            e.preventDefault();
-            const win = window.open(mapDirectionsUrl, "_blank", "noopener,noreferrer");
-            if (!win) window.location.href = mapDirectionsUrl;
-          }}
           className="inline-flex items-center gap-2 mt-6 font-sans text-xs tracking-[0.2em] uppercase text-primary border border-primary px-6 py-3 hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
