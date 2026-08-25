@@ -24,8 +24,8 @@ export const wedding = {
   venueName: "Kampung Pasir Baru",
   venueAddress: "Lot 12, Lorong Cempaka, Kampung Pasir Baru, 43500, Semenyih, Selangor",
   // Google Maps: right-click your venue → "Copy coordinates"
-  mapLat: 2.99754157965641,
-  mapLng:  101.87299644720257,
+  mapLat: 2.997552275696542,
+  mapLng: 101.87299464430723,
 
   // --- Wording ---
   heroTagline: "Alhamdulillah",
