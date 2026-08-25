@@ -43,7 +43,7 @@ const VenueMap = () => {
 
         <motion.a
           href={mapDirectionsUrl}
-          target="_blank"
+          target="2.9975750351644246, 101.87287648634593"
           rel="noopener noreferrer"
           onClick={(e) => {
             // Some embedded previews block target="_blank"; force the open.
