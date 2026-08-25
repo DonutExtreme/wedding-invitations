@@ -57,5 +57,11 @@ export const wedding = {
   ],
 };
 
+const mapQuery = encodeURIComponent(`${wedding.venueName}, ${wedding.venueAddress}`);
+
 export const mapEmbedUrl = `https://www.google.com/maps?q=${wedding.mapLat},${wedding.mapLng}&z=16&output=embed`;
-export const mapDirectionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${wedding.mapLat},${wedding.mapLng}`;
+// Uses the written address (with coordinates as a precise fallback) so Maps
+// opens navigation to the venue itself, not just a dropped pin.
+export const mapDirectionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${mapQuery}&destination_place_id=&travelmode=driving`;
+export const mapCoordsDirectionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${wedding.mapLat}%2C${wedding.mapLng}&travelmode=driving`;
+
