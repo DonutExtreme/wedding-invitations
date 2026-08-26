@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import HeroSection from "@/components/HeroSection";
 import InvitationSection from "@/components/InvitationSection";
 import EventDetails from "@/components/EventDetails";
+import DressCode from "@/components/DressCode";
 import VenueMap from "@/components/VenueMap";
 import RSVPSection from "@/components/RSVPSection";
 import Footer from "@/components/Footer";
@@ -29,6 +30,7 @@ const Index = () => {
           <HeroSection />
           <InvitationSection />
           <EventDetails />
+          <DressCode />
           <VenueMap />
           <RSVPSection />
           <Footer />
