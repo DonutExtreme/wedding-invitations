@@ -58,11 +58,12 @@ export const wedding = {
 };
 
 const mapQuery = encodeURIComponent(`${wedding.venueName}, ${wedding.venueAddress}`);
+const coords = `${wedding.mapLat},${wedding.mapLng}`;
 
-export const mapEmbedUrl = `https://www.google.com/maps?q=${wedding.mapLat},${wedding.mapLng}&z=16&output=embed`;
-// Coordinates as the destination so Maps navigates straight to the venue pin,
-// with the address as the label users see in the app.
-export const mapDirectionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${wedding.mapLat}%2C${wedding.mapLng}&travelmode=driving`;
+// Classic embed host — the most reliable one for iframes (no API key needed).
+export const mapEmbedUrl = `https://maps.google.com/maps?q=${coords}&z=16&hl=en&output=embed`;
+// Opens the venue pin directly in the Google Maps app (or web, if not installed).
+export const mapPinUrl = `https://www.google.com/maps/search/?api=1&query=${coords}`;
+// Turn-by-turn navigation to the venue.
+export const mapDirectionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${coords}&travelmode=driving`;
 export const mapSearchUrl = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`;
-
-
