@@ -63,5 +63,5 @@ const encodedCoords = encodeURIComponent(coords);
 // Classic embed host — the most reliable one for iframes (no API key needed).
 export const mapEmbedUrl = `https://maps.google.com/maps?q=${coords}&z=16&hl=en&output=embed`;
 // Coordinate-only universal links are understood reliably by Android, iOS, and desktop.
-export const mapPinUrl = `https://www.google.com/maps/search/?api=1&query=${encodedCoords}`;
-export const mapDirectionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodedCoords}&travelmode=driving`;
+export const mapPinUrl = "https://maps.app.goo.gl/xFay4fEWRiyo9ksw8";
+export const mapDirectionsUrl = "https://maps.app.goo.gl/xFay4fEWRiyo9ksw8";
