@@ -48,8 +48,7 @@ const VenueMap = () => {
         <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
           <a
             href={mapDirectionsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            aria-label={`Get directions to ${wedding.venueName}`}
             className="inline-flex items-center gap-2 font-sans text-xs tracking-[0.2em] uppercase text-primary border border-primary px-6 py-3 hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
           >
             <NavigationIcon className="w-4 h-4" />
@@ -58,8 +57,7 @@ const VenueMap = () => {
 
           <a
             href={mapPinUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            aria-label={`Open ${wedding.venueName} in Google Maps`}
             className="inline-flex items-center gap-2 font-sans text-xs tracking-[0.2em] uppercase text-muted-foreground border border-border px-6 py-3 hover:text-primary hover:border-primary transition-colors duration-300"
           >
             <MapPin className="w-4 h-4" />
