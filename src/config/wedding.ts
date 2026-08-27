@@ -59,9 +59,12 @@ export const wedding = {
 
 const coords = `${wedding.mapLat},${wedding.mapLng}`;
 const encodedCoords = encodeURIComponent(coords);
+const encodedVenue = encodeURIComponent(wedding.venueName);
 
 // Classic embed host — the most reliable one for iframes (no API key needed).
 export const mapEmbedUrl = `https://maps.google.com/maps?q=${coords}&z=16&hl=en&output=embed`;
-// Coordinate-only universal links are understood reliably by Android, iOS, and desktop.
-export const mapPinUrl = "https://maps.app.goo.gl/xFay4fEWRiyo9ksw8";
-export const mapDirectionsUrl = "https://maps.app.goo.gl/xFay4fEWRiyo9ksw8";
+// Opens the venue pin without a fixed starting point, so Maps uses the guest's current location.
+export const mapPinUrl = `https://www.google.com/maps/search/?api=1&query=${encodedCoords}`;
+// Directions with destination only — Google Maps will default to the guest's current/device location.
+export const mapDirectionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodedCoords}&destination_place=${encodedVenue}`;
+
