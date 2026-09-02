@@ -17,38 +17,38 @@ export const wedding = {
   // --- Date & time ---
   dateShort: "02 · 01 · 2027", // hero + footer
   dateLong: "Saturday, 2nd January 2027", // event details card
-  time: "5:00 PM – 9:00 PM",
-  receptionTime: "5:00 PM",
+  time: "12:00 PM – 5:00 PM",
+  receptionTime: "12:00 PM",
 
   // --- Day schedule (rendered in the Timeline section) ---
   timeline: [
     {
-      time: "4:30 PM",
+      time: "12:00 PM",
       title: "Guests Arrive",
       description: "Welcome drinks and door gifts as you settle in.",
     },
     {
-      time: "5:00 PM",
+      time: "12:30 PM",
       title: "Arrival of the Couple",
       description: "The groom's procession arrives at Kampung Pasir Baru.",
     },
     {
-      time: "5:30 PM",
+      time: "1:00 PM",
       title: "Bersanding Ceremony",
       description: "The couple takes their seat for the traditional blessing.",
     },
     {
-      time: "6:30 PM",
+      time: "2:00 PM",
       title: "Luncheon Feast",
       description: "A traditional Malay feast served to all our guests.",
     },
     {
-      time: "8:00 PM",
+      time: "3:30 PM",
       title: "Photography & Well Wishes",
       description: "Capturing memories with family and friends.",
     },
     {
-      time: "9:00 PM",
+      time: "5:00 PM",
       title: "Reception Ends",
       description: "Thank you for celebrating with us.",
     },
