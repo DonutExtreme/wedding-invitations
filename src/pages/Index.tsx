@@ -4,6 +4,7 @@ import HeroSection from "@/components/HeroSection";
 import InvitationSection from "@/components/InvitationSection";
 import EventDetails from "@/components/EventDetails";
 import DressCode from "@/components/DressCode";
+import WeddingTimeline from "@/components/WeddingTimeline";
 import VenueMap from "@/components/VenueMap";
 import RSVPSection from "@/components/RSVPSection";
 import Footer from "@/components/Footer";
@@ -30,6 +31,7 @@ const Index = () => {
           <HeroSection />
           <InvitationSection />
           <EventDetails />
+          <WeddingTimeline />
           <DressCode />
           <VenueMap />
           <RSVPSection />
