@@ -17,8 +17,8 @@ export const wedding = {
   // --- Date & time ---
   dateShort: "02 · 01 · 2027", // hero + footer
   dateLong: "Saturday, 2nd January 2027", // event details card
-  time: "5:00 PM – 9:00 PM",
-  receptionTime: "5:00 PM",
+  time: "12:00 PM – 5:00 PM",
+  receptionTime: "12:00 PM",
 
   // --- Day schedule (rendered in the Timeline section) ---
   timeline: [
