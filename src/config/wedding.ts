@@ -94,12 +94,15 @@ export const wedding = {
 const coords = `${wedding.mapLat},${wedding.mapLng}`;
 const encodedCoords = encodeURIComponent(coords);
 
-// Standard universal links — supported on iOS, Android and desktop.
-// Embedded map (no API key needed).
-export const mapEmbedUrl = `https://maps.google.com/maps?q=${encodedCoords}&z=16&hl=en&output=embed`;
-// Opens the venue pin; Maps app takes over on mobile, browser on desktop.
-export const mapPinUrl = `https://www.google.com/maps/search/?api=1&query=${encodedCoords}`;
-// Destination only, so Maps uses the guest's current location as the origin.
-export const mapDirectionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodedCoords}&travelmode=driving`;
+// Embedded Google Maps
+export const mapEmbedUrl =
+  `https://www.google.com/maps?q=${encodedCoords}&z=16&hl=en&output=embed`;
 
+// Open venue location in Google Maps
+export const mapPinUrl =
+  `https://www.google.com/maps/search/?api=1&query=${encodedCoords}`;
+
+// Get driving directions to the venue
+export const mapDirectionsUrl =
+  `https://www.google.com/maps/dir/?api=1&destination=${encodedCoords}&travelmode=driving`;
 
