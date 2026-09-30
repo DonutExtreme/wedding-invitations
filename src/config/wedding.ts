@@ -23,27 +23,27 @@ export const wedding = {
   // --- Day schedule (rendered in the Timeline section) ---
   timeline: [
     {
-      time: "12:00 PM",
+      time: "10:00 AM",
       title: "Guests Arrive",
       description: "Welcome drinks and door gifts as you settle in.",
     },
     {
-      time: "12:30 PM",
+      time: "10:45 AM",
       title: "Arrival of the Couple",
       description: "The groom's procession arrives at Kampung Pasir Baru.",
     },
     {
-      time: "1:00 PM",
+      time: "11:30 AM",
       title: "Bersanding Ceremony",
       description: "The couple takes their seat for the traditional blessing.",
     },
     {
-      time: "2:00 PM",
+      time: "1:00 PM",
       title: "Luncheon Feast",
       description: "A traditional Malay feast served to all our guests.",
     },
     {
-      time: "3:30 PM",
+      time: "3:00 PM",
       title: "Photography & Well Wishes",
       description: "Capturing memories with family and friends.",
     },
