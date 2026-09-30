@@ -28,7 +28,7 @@ export const wedding = {
       description: "Welcome drinks and door gifts as you settle in.",
     },
     {
-      time: "10:45 AM",
+      time: "12:30 PM",
       title: "Arrival of the Couple",
       description: "The groom's procession arrives at Kampung Pasir Baru.",
     },
