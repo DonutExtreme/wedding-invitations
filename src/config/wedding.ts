@@ -33,17 +33,17 @@ export const wedding = {
       description: "The groom's procession arrives at Kampung Pasir Baru.",
     },
     {
-      time: "11:30 AM",
+      time: "1:00 PM",
       title: "Bersanding Ceremony",
       description: "The couple takes their seat for the traditional blessing.",
     },
     {
-      time: "1:00 PM",
+      time: "2:30 PM",
       title: "Luncheon Feast",
       description: "A traditional Malay feast served to all our guests.",
     },
     {
-      time: "3:00 PM",
+      time: "3:30 PM",
       title: "Photography & Well Wishes",
       description: "Capturing memories with family and friends.",
     },
